@@ -111,6 +111,13 @@ public class APIResource {
         return GSON.toJson(editedBoatDTO);
     }
 
+    @DELETE
+    @Path("boat/{id}")
+    public String deleteBoat(@PathParam("id") long id){
+        BoatDTO boatDeleted = FACADE.deleteBoat(id);
+        return GSON.toJson(boatDeleted);
+    }
+
 
 //            PUT
 ///tomcat/CA1/api/ca1/person/{id}

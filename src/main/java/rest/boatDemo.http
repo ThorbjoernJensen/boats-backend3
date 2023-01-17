@@ -84,7 +84,7 @@ Content-Type: application/json
 accept: application/json
 
 {
-  "id": "3",
+  "id": "1",
   "brand": "Torpedobåd",
   "model": "luxus",
   "name": "Postspeederen2",
@@ -97,17 +97,22 @@ accept: application/json
   },
   "owners": [
     {
-      "id": 1,
-      "name": "Skipper Bente",
-      "address": "Persillehaven 38",
-      "phone": "40404040"
-
-    },
-    {
       "id": 2,
       "name": "Skipper Bænt",
       "address": "Persillehaven 40",
       "phone": "38383838"
+
+    },
+    {
+      "id": 3,
+      "name": "Skipper Niels",
+      "address": "Persillehaven 42",
+      "phone": "39393939"
+
     }
   ]
 }
+### delete boat localhost
+DELETE http://localhost:8080/boats/api/boat/boat/2
+Content-Type: application/json
+accept: application/json

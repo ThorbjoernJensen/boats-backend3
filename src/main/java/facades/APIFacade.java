@@ -10,6 +10,7 @@ import entities.Owner;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
+import javax.ws.rs.WebApplicationException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -193,6 +194,28 @@ public class APIFacade {
         }
         return new BoatDTO(oldBoat);
     }
+
+    public BoatDTO deleteBoat(long id) throws WebApplicationException {
+        EntityManager em = getEntityManager();
+        Boat boat = em.find(Boat.class, id);
+        System.out.println(boat.toString());
+
+        if(boat == null){
+            throw new WebApplicationException(String.format("Boat with id: (%d) is not in db", id), 404);
+        }
+
+
+        try{
+            em.getTransaction().begin();
+            em.remove(boat);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+
+        return new BoatDTO(boat);
+    }
+
 }
 
 
